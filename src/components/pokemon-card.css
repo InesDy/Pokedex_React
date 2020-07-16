@@ -1,0 +1,8 @@
+.horizontal {
+border: solid 4px #f5f5f5;
+min-height: 180px;
+}
+p  {
+    align-items: center;
+}
+
