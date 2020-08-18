@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from "react";
 import Pokemon from "../models/pokemon";
-import "../helpers/format-date";
-import "../helpers/format-type";
+import formatDate from "../helpers/format-date";
+import formatType from "../helpers/format-type";
 import "./pokemon-card.css";
 
 type Props = {
