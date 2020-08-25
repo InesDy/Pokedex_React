@@ -41,6 +41,10 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
     "Psy",
   ];
 
+  const hasType = (type: string): boolean => {
+    return form.types.value.includes(type);
+  };
+
   return (
     <form>
       <div className="row">
@@ -58,17 +62,32 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
                 {/* Pokemon name */}
                 <div className="form-group">
                   <label htmlFor="name">Name</label>
-                  <input id="name" type="text" className="form-control"></input>
+                  <input
+                    id="name"
+                    type="text"
+                    value={form.name.value}
+                    className="form-control"
+                  ></input>
                 </div>
                 {/* Pokemon hp */}
                 <div className="form-group">
                   <label htmlFor="hp">Health point</label>
-                  <input id="hp" type="number" className="form-control"></input>
+                  <input
+                    id="hp"
+                    type="number"
+                    value={form.hp.value}
+                    className="form-control"
+                  ></input>
                 </div>
                 {/* Pokemon cp */}
                 <div className="form-group">
                   <label htmlFor="cp">Damage</label>
-                  <input id="cp" type="number" className="form-control"></input>
+                  <input
+                    id="cp"
+                    type="number"
+                    value={form.cp.value}
+                    className="form-control"
+                  ></input>
                 </div>
                 {/* Pokemon types */}
                 <div className="form-group">
@@ -79,6 +98,8 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
                         <input
                           id={type}
                           type="checkbox"
+                          value={type}
+                          checked={hasType(type)}
                           className="filled-in"
                         ></input>
                         <span>
