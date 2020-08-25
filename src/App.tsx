@@ -3,7 +3,7 @@ import PokemonList from "./pages/pokemon-list";
 import PokemonDetail from "./pages/pokemon-detail";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import PageNotFound from "./pages/page-not-found";
-
+import PokemonEdit from "./pages/pokemon-edit";
 import "./App.css";
 
 const App: FunctionComponent = () => {
@@ -23,6 +23,7 @@ const App: FunctionComponent = () => {
         <Switch>
           <Route exact path="/" component={PokemonList} />
           <Route exact path="/pokemons" component={PokemonList} />
+          <Route exact path="/pokemons/edit/:id" component={PokemonEdit} />
           <Route exact path="/pokemons/:id" component={PokemonDetail} />
           <Route component={PageNotFound} />{" "}
           {/* Route without a path will be redirect on the page not found - always at the end of the Routes.*/}
