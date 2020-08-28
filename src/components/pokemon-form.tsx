@@ -30,6 +30,64 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
 
   const history = useHistory();
 
+  const validateForm = () => {
+    let newForm: Form = form;
+    //validator name
+    if (!/^[a-zA-Zàéè ]{3,25}$/.test(form.name.value)) {
+      const errorMsg: string = "Name required (1-25).";
+      const newField: Field = {
+        value: form.name.value,
+        error: errorMsg,
+        isValid: false,
+      };
+      newForm = { ...newForm, ...{ name: newField } };
+    } else {
+      const newField: Field = {
+        value: form.name.value,
+        error: "",
+        isValid: true,
+      };
+      newForm = { ...newForm, ...{ name: newField } };
+    }
+    //validator hp
+    if (!/^[0-9]{1,3}$/.test(form.name.value)) {
+      const errorMsg: string = "Health points between 0-999.";
+      const newField: Field = {
+        value: form.hp.value,
+        error: errorMsg,
+        isValid: false,
+      };
+      newForm = { ...newForm, ...{ hp: newField } };
+    } else {
+      const newField: Field = {
+        value: form.hp.value,
+        error: "",
+        isValid: true,
+      };
+      newForm = { ...newForm, ...{ hp: newField } };
+    }
+
+    //validator cp
+    if (!/^[0-9]{1,2}$/.test(form.cp.value)) {
+      const errorMsg: string = "Damage points between 0-99.";
+      const newField: Field = {
+        value: form.cp.value,
+        error: errorMsg,
+        isValid: false,
+      };
+      newForm = { ...newForm, ...{ cp: newField } };
+    } else {
+      const newField: Field = {
+        value: form.cp.value,
+        error: "",
+        isValid: true,
+      };
+      newForm = { ...newForm, ...{ cp: newField } };
+    }
+    setForm(newForm);
+    return newForm.name.isValid && newForm.hp.isValid && newForm.cp.isValid;
+  };
+
   const types: string[] = [
     "Plante",
     "Feu",
