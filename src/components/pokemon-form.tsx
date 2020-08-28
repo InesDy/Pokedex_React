@@ -71,8 +71,10 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
                   <label htmlFor="name">Name</label>
                   <input
                     id="name"
+                    name="name"
                     type="text"
                     value={form.name.value}
+                    onChange={(e) => handleInputChange(e)}
                     className="form-control"
                   ></input>
                 </div>
@@ -81,8 +83,10 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
                   <label htmlFor="hp">Health point</label>
                   <input
                     id="hp"
+                    name="hp"
                     type="number"
                     value={form.hp.value}
+                    onChange={(e) => handleInputChange(e)}
                     className="form-control"
                   ></input>
                 </div>
@@ -91,8 +95,10 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
                   <label htmlFor="cp">Damage</label>
                   <input
                     id="cp"
+                    name="cp"
                     type="number"
                     value={form.cp.value}
+                    onChange={(e) => handleInputChange(e)}
                     className="form-control"
                   ></input>
                 </div>
