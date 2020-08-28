@@ -52,6 +52,26 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
 
     setForm({ ...form, ...newField });
   };
+
+  const selectType = (type: string, e: React.ChangeEvent<HTMLInputElement>) => {
+    const checked = e.target.checked;
+    let newField: Field;
+
+    if (checked) {
+      //if user ticks one type, it adds up to the list
+      const newTypes: string[] = form.types.value.concat([type]);
+      newField = { value: newTypes };
+    } else {
+      //if user unchecks
+      const newTypes: string[] = form.types.value.filter(
+        (currentType: string) => currentType !== type
+      );
+      newField = { value: newTypes };
+    }
+
+    setForm({ ...form, ...{ types: newField } });
+  };
+
   return (
     <form>
       <div className="row">
@@ -113,6 +133,7 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
                           type="checkbox"
                           value={type}
                           checked={hasType(type)}
+                          onChange={(e) => selectType(type, e)}
                           className="filled-in"
                         ></input>
                         <span>
