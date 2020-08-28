@@ -88,6 +88,23 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
     return newForm.name.isValid && newForm.hp.isValid && newForm.cp.isValid;
   };
 
+  const isTypesValid = (type: string): boolean => {
+    {
+      /* if there is one box checked, unable the user to untick the last one. hasType check that use does not lock a checked box*/
+    }
+    if (form.types.value.length === 1 && hasType(type)) {
+      return false;
+    }
+
+    {
+      /* if there is one box checked, unable the user to untick the last one*/
+    }
+    if (form.types.value.length >= 3 && !hasType(type)) {
+      return false;
+    }
+    return true;
+  };
+
   const types: string[] = [
     "Plante",
     "Feu",
@@ -136,7 +153,11 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(form);
-    history.push(`/pokemons/${pokemon.id}`);
+    const isFormValid = validateForm();
+
+    if (isFormValid) {
+      history.push(`/pokemons/${pokemon.id}`);
+    }
   };
 
   return (
@@ -201,6 +222,7 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
                           value={type}
                           checked={hasType(type)}
                           onChange={(e) => selectType(type, e)}
+                          disabled={!isTypesValid(type)} // if type is not valid (false)  then lock the box and cannot tick it.
                           className="filled-in"
                         ></input>
                         <span>
