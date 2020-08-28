@@ -50,7 +50,7 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
       newForm = { ...newForm, ...{ name: newField } };
     }
     //validator hp
-    if (!/^[0-9]{1,3}$/.test(form.name.value)) {
+    if (!/^[0-9]{1,3}$/.test(form.hp.value)) {
       const errorMsg: string = "Health points between 0-999.";
       const newField: Field = {
         value: form.hp.value,
@@ -152,9 +152,7 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(form);
     const isFormValid = validateForm();
-
     if (isFormValid) {
       history.push(`/pokemons/${pokemon.id}`);
     }
@@ -185,6 +183,12 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
                     onChange={(e) => handleInputChange(e)}
                     className="form-control"
                   ></input>
+                  {form.name.error && (
+                    <div className="card-panel red accent-1">
+                      {" "}
+                      {form.name.error}
+                    </div>
+                  )}
                 </div>
                 {/* Pokemon hp */}
                 <div className="form-group">
@@ -197,6 +201,12 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
                     onChange={(e) => handleInputChange(e)}
                     className="form-control"
                   ></input>
+                  {form.hp.error && (
+                    <div className="card-panel red accent-1">
+                      {" "}
+                      {form.hp.error}
+                    </div>
+                  )}
                 </div>
                 {/* Pokemon cp */}
                 <div className="form-group">
@@ -209,6 +219,12 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
                     onChange={(e) => handleInputChange(e)}
                     className="form-control"
                   ></input>
+                  {form.cp.error && (
+                    <div className="card-panel red accent-1">
+                      {" "}
+                      {form.cp.error}
+                    </div>
+                  )}
                 </div>
                 {/* Pokemon types */}
                 <div className="form-group">
