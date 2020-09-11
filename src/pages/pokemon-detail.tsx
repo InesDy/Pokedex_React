@@ -13,8 +13,10 @@ const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/pokemons/${match.params.id}`)
+    fetch(`http://localhost:3000/pokemons/${match.params.id}`)
       .then((response) => response.json())
+      .then((res) => {console.log
+      return res}
       .then((pokemon) => {
         if (pokemon.id) setPokemon(pokemon);
       });

@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState, useEffect } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import PokemonForm from "../components/pokemon-form";
 import Pokemon from "../models/pokemon";
-import POKEMONS from "../models/mock-pokemons";
+// import POKEMONS from "../models/mock-pokemons";
 
 type Params = { id: string };
 
@@ -12,8 +12,10 @@ const PokemonEdit: FunctionComponent<RouteComponentProps<Params>> = ({
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/pokemons/edit/${match.params.id}`)
+    fetch(`http://localhost:3000/pokemons/edit/${match.params.id}`)
       .then((response) => response.json())
+      .then((res) => {console.log
+        return res}
       .then((pokemon) => {
         if (pokemon.id) setPokemon(pokemon);
       });
